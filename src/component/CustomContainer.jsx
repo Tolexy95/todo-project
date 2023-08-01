@@ -1,21 +1,18 @@
-import React from 'react'
-import { useState } from 'react'
-
+import React from "react";
+import { useState } from "react";
 
 const CustomContainer = (props) => {
-    const {id,question, answer, showIndex, checked, index} =props
-    
-      
-   
+  const { id, question, answer, checkState, index, checked } = props;
+
   return (
     <div>
-         <p>{id}</p>
-        <h1 className='questContain' onClick={() => showIndex(index)}>{question}</h1>
-       {
-        checked &&  <p>{answer}</p>
-       }
-        </div>
-  )
-}
+      <p>{id}</p>
+      <h1 className="questContain" onClick={() => checkState(index)}>
+        {question}
+      </h1>
+      {checked === index && <p>{answer}</p>}
+    </div>
+  );
+};
 
-export default CustomContainer
+export default CustomContainer;
