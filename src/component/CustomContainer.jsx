@@ -2,15 +2,16 @@ import React from "react";
 import { useState } from "react";
 
 const CustomContainer = (props) => {
-  const { id, question, answer, checkState, index, checked } = props;
+  const { id, question, answer, completed, checkState} = props;
 
   return (
     <div>
       <p>{id}</p>
-      <h1 className="questContain" onClick={() => checkState(index)}>
+      <h1 className="questContain" onClick={() => checkState(id)}>
         {question}
       </h1>
-      {checked === index && <p>{answer}</p>}
+
+      {completed && <p>{answer}</p>}
     </div>
   );
 };

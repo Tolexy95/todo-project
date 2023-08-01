@@ -43,25 +43,28 @@ const quests = [
 ];
 
 function App() {
-  const [checked, setChecked] = useState(false);
-
-
+  const [checked, setChecked] = useState(quests);
 
 function checkState(index){
-  setChecked(index === checked ? false : index)
+  const showAnswers =checked.map((itemChecked) => {
+    if(itemChecked.id === index){
+      return {...itemChecked, completed: !itemChecked.completed};
+    }else {
+      return itemChecked
+    }
+  })
+  setChecked(showAnswers)
 }
 
-  return (
-    <div className="App">
+  return ( 
+    <div className="App">        
       <div className="container">
-        {quests.map((quest, index) => {
+        {checked.map((quest, index) => {
           return (
             <CustomContainer
               key={index}
               {...quest}
-              checkState={checkState}
-               checked={checked}
-               index={index}
+             checkState={checkState}
             />
           );
         })}
