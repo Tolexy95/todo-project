@@ -53,8 +53,12 @@ function checkState(index){
       return itemChecked
     }
   })
-  setChecked(showAnswers)
+
+  const pickedQuestion =checked.find((itemChecked) => itemChecked.id === index);
+  const newQuestion ={...pickedQuestion, id:Math.floor(Math.random()*4999)};
+  setChecked([...showAnswers, newQuestion]);
 }
+
 
   return ( 
     <div className="App">        
@@ -63,8 +67,8 @@ function checkState(index){
           return (
             <CustomContainer
               key={index}
-              {...quest}
-             checkState={checkState}
+              {...quest} 
+             checkState={checkState}            
             />
           );
         })}
